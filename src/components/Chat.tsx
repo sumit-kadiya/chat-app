@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../store/User-Context";
+import React, { useState } from "react";
+import { useGlobalContext } from "../store/User-Context";
 import Message from "./Message";
 
 const Chat = () => {
   const [msg, setMsg] = useState("");
-  const { user, sendMessage, logoutHandler } = useContext(UserContext);
+  const { user, sendMessage, logoutHandler } = useGlobalContext();
 
   const submitMessageHandler = (e: React.FormEvent) => {
     e.preventDefault();

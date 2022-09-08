@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../store/User-Context";
+import { useGlobalContext } from "../store/User-Context";
 
 const Home = () => {
   const [user, setUser] = useState("");
   let navigate = useNavigate();
-  const { users, alertMsg, loginHandler } = useContext(UserContext);
+  const { users, alertMsg, loginHandler } = useGlobalContext();
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const Home = () => {
     <div className="login-page">
       <div className="form">
         {alertMsg ? (
-          <h2>Server is not Responding</h2>
+          <h2>{alertMsg}</h2>
         ) : (
           <form className="login-form" onSubmit={submitHandler}>
             <h2>React Chat</h2>

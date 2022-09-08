@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useContext } from "react";
 import {
   AuthUserType,
   UsersType,
@@ -79,6 +79,10 @@ const UserProvider = ({ children }: UserContextProviderProps) => {
   return (
     <UserContext.Provider value={userContext}>{children}</UserContext.Provider>
   );
+};
+
+export const useGlobalContext = () => {
+  return useContext(UserContext);
 };
 
 export default UserProvider;

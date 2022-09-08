@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { UserContext } from "../store/User-Context";
+import { useGlobalContext } from "../store/User-Context";
 
-// type PrivateRouteProps = {
+// type PrivateRoutePropsType = {
 //   children: React.ReactNode;
 // };
 
 const PrivateRoute: React.FC = () => {
-  const { isAuth } = useContext(UserContext);
+  const { isAuth } = useGlobalContext();
   if (!isAuth) {
     return <Navigate to="/" />;
   }

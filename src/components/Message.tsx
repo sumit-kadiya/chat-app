@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { UserContext } from "../store/User-Context";
+import { useGlobalContext } from "../store/User-Context";
 
 const Message = () => {
-  const { user, messages } = useContext(UserContext);
+  const { user, messages } = useGlobalContext();
 
   return (
     <div className="msgs">
