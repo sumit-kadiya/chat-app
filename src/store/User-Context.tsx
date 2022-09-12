@@ -15,28 +15,39 @@ const getLocalMsgs = () => {
     return [];
   }
 };
+const getLocalUser = () => {
+  let user = localStorage.getItem("user");
+
+  if (user) {
+    return JSON.parse(user);
+  } else {
+    return null;
+  }
+};
 
 export const UserContext = createContext<UserContextType>({
   users: [],
   user: null,
   alertMsg: "",
   messages: [],
-  isAuth: false,
   sendMessage: () => {},
   loginHandler: (user: AuthUserType) => {},
   logoutHandler: () => {},
 });
 
 const UserProvider = ({ children }: UserContextProviderProps) => {
-  const [users, setUsers] = useState<UsersType | null>(null);
-  const [user, setUser] = useState<AuthUserType | null>(null);
-  const [isAuth, setIsAuth] = useState(false);
+  const [users, setUsers] = useState<UsersType>([]);
+  const [user, setUser] = useState<AuthUserType | null>(getLocalUser());
   const [messages, setMessages] = useState(getLocalMsgs());
   const [alertMsg, setAlert] = useState("");
 
   useEffect(() => {
     localStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   useEffect(() => {
     fetch("https://api.github.com/users")
@@ -57,11 +68,9 @@ const UserProvider = ({ children }: UserContextProviderProps) => {
     setMessages([...messages, msg]);
   };
   const loginHandler = (user: AuthUserType) => {
-    setIsAuth(true);
     setUser(user);
   };
   const logoutHandler = () => {
-    setIsAuth(false);
     setUser(null);
   };
 
@@ -70,7 +79,6 @@ const UserProvider = ({ children }: UserContextProviderProps) => {
     user,
     alertMsg,
     messages,
-    isAuth,
     sendMessage,
     loginHandler,
     logoutHandler,

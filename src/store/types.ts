@@ -26,7 +26,6 @@ export type UserContextType = {
   user: AuthUserType | null;
   alertMsg: string;
   messages: [];
-  isAuth: boolean;
   sendMessage: (msg: any) => void;
   loginHandler: (user: AuthUserType) => void;
   logoutHandler: () => void;

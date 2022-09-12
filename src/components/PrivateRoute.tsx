@@ -7,8 +7,8 @@ import { useGlobalContext } from "../store/User-Context";
 // };
 
 const PrivateRoute: React.FC = () => {
-  const { isAuth } = useGlobalContext();
-  if (!isAuth) {
+  const { user } = useGlobalContext();
+  if (!user) {
     return <Navigate to="/" />;
   }
   return <Outlet />;
