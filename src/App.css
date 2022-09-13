@@ -3,7 +3,6 @@ body {
 }
 .msger {
   display: flex;
-  /* flex-direction: column; */
   flex-flow: column;
   justify-content: space-between;
   width: 90%;
@@ -14,9 +13,14 @@ body {
   background: #fff;
   box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
 }
+.msgs {
+  height: 80%;
+  overflow-y: auto;
+  background: transparent;
+}
 
 .msger-header-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
 }
 .msger-header {
@@ -147,6 +151,10 @@ body {
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input::placeholder {
+  color: #43a047;
+  font-size: 16px;
 }
 .form input {
   font-family: "Roboto", sans-serif;

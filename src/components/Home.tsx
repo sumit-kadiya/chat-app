@@ -9,15 +9,15 @@ const Home = () => {
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    if (user === "") {
+      alert("Please enter username");
+    }
     const currentUser = users?.find(
       (el: any) => el.login === user.toLowerCase()
     );
-
     if (currentUser && user.toLowerCase() === currentUser.login) {
       loginHandler(currentUser);
       navigate(`/${currentUser.id}`);
-    } else if (user === "") {
-      alert("Please enter username");
     } else {
       alert("Invalid user");
     }
