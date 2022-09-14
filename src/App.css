@@ -194,3 +194,53 @@ body {
 .err-page {
   text-align: center;
 }
+
+@media only screen and (max-width: 426px) {
+  .msger {
+    width: 100%;
+  }
+  .msgs {
+    height: 80%;
+    overflow-y: auto;
+    background: transparent;
+  }
+
+  .msger-header-title {
+    font-size: 20px;
+  }
+  .msger-header {
+    padding: 10px;
+  }
+  .msger-header button {
+    padding: 5px;
+    font-size: 16px;
+  }
+  .msger-chat {
+    padding: 10px;
+  }
+
+  .msg:last-of-type {
+    margin: 0;
+  }
+  .msg-img {
+    width: 30px;
+    height: 30px;
+  }
+  .msg-bubble {
+    max-width: 400px;
+    padding: 10px;
+  }
+  .msg-info {
+    margin-bottom: 5px;
+  }
+  .msg-info-name {
+    font-size: 12px;
+  }
+  .msger-inputarea {
+    padding: 5px;
+  }
+  .login-page {
+    width: 425px;
+    margin: auto;
+  }
+}
